@@ -27,6 +27,15 @@ const catagoriIDimport = async (id) => {
   const cardDataId = data.data;
   // console.log(data.data);
 
+  // const newarr = cardDataId.forEach(a => {
+  //   const hourconvart = a.others.posted_date;
+  //   const hours = Math.floor(hourconvart / 3600); 
+  //   const remainingSeconds = hourconvart % 3600;
+  //   const minutes = Math.floor(remainingSeconds / 60);
+  //   console.log (hours, minutes)
+
+  // })
+
   if (!!data.data) {
     // console.log ('name')
   }
@@ -34,9 +43,12 @@ const catagoriIDimport = async (id) => {
   const cardsId = document.getElementById("cards");
   cardsId.innerText = "";
   cardDataId.forEach((element) => {
-    console.log(element);
-    // const sort = element.others.views;
-
+    // console.log(element);
+    const sort = element.others.posted_date;
+    const hours = Math.floor(sort / 3600); 
+    const remainingSeconds = sort % 3600;
+    const minutes = Math.floor(remainingSeconds / 60);
+    console.log (hours, minutes)
 
     const div = document.createElement("div");
     div.classList.add("c");
@@ -44,7 +56,7 @@ const catagoriIDimport = async (id) => {
         <div class="card bg-base-100 border rounded-md ">
                 <div> 
                     <img class =" h-[200px] w-full" src=${element.thumbnail}>
-                    <p> </p>
+                    <p>${hours}hrs ${minutes} min ago </p>
                  <div>            
                 <div class="flex justify-start mt-4 p-2">
                     <div class=" h-[50px] w-[50px]" >
