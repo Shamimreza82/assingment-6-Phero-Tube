@@ -13,7 +13,7 @@ const dataLode = async () => {
 
     const div = document.createElement("div");
     div.innerHTML = `
-        <h1 onclick="catagoriIDimport('${element.category_id}')" class = "font-bold bg-slate-300 py-2 px-5 rounded-md"> ${element.category}</h1>
+        <h1 onclick="catagoriIDimport('${element.category_id}')" class =  "font-bold bg-[#25252526] py-2 px-5 rounded-md hover:bg-[#FF1F3D] hover:text-white"> ${element.category}</h1>
         `;
     manue.appendChild(div);
   });
@@ -188,17 +188,19 @@ const catagoriIDimport = async (id) => {
     const hours = Math.floor(sort / 3600); 
     const remainingSeconds = sort % 3600;
     const minutes = Math.floor(remainingSeconds / 60);
-
-
+    const hourAndMinit = `${hours} hrs ${minutes} min`
+    console.log (hourAndMinit)
     const div = document.createElement("div");
-    div.classList.add("c");
     div.innerHTML = `
         <div class="card bg-base-100 border rounded-md ">
                 <div> 
-                    <img class =" h-[200px] w-full relative" src=${element.thumbnail}>
-                    <p class=" relative -mt-8 ml-40 bg-slate-400 pl-2 ">${hours || "" }hrs ${minutes || " "} min ago </p>
+                    <img class =" h-[200px] w-full relative " src=${element.thumbnail}>
+                    <div class = " right-0 -mt-6 mr-1 px-2 rounded-md absolute bg-slate-600 " > 
+                        <p class=" text-white">${hourAndMinit} </p>
+                     </div>
+                   
                  <div>            
-                <div class="flex justify-start mt-4 p-2">
+                <div class="flex justify-start  p-2">
                     <div class=" h-[50px] w-[50px]" >
                         <img class ="h-[50px] rounded-full" src=${element.authors[0].profile_picture}>          
                     </div>
@@ -220,20 +222,3 @@ const catagoriIDimport = async (id) => {
   });
 };
 catagoriIDimport(1000);
-
-// document.getElementById('blogBtn').addEventListener ('click', function(){
-//     // window.location.href ="blog.html"
-
-// })
-
-
-function convertToNumber(str) {
-  const num = parseFloat(str);
-  if (str.endsWith("K")) {
-    return num * 1000;
-  }
-  return num;
-}
-sort.sort((a, b) => convertToNumber(b) - convertToNumber(a));
-
-console.log(sort);
