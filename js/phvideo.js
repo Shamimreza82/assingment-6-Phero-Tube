@@ -27,20 +27,23 @@ const catagoriIDimport = async (id) => {
   // console.log (data.data)
 
   const cardsId = document.getElementById("cards");
+  cardsId.innerText = "";
   cardDataId.forEach((element) => {
     console.log(element);
     const div = document.createElement("div");
     div.classList.add("c")
     div.innerHTML = `
-        <div class="card bg-base-100 border rounded-md h-[350px]">            
-                <figure class = " w-fit"><img src=${element.thumbnail}></figure>
-                <div class="flex justify-center">
-                    <div class="h-24 w-24" >
+        <div class="card bg-base-100 border rounded-md ">
+                <div> 
+                    <img src=${element.thumbnail}>
+                 <div>            
+                <div class="flex justify-start  mt-4">
+                    <div class="h-16 w-16" >
                         <img class ="rounded-full" src=${element.authors[0].profile_picture}>
                     </div>
-                    <div>
+                    <div class =" ml-3">
                         <h2 class="font-bold">${element.title}</h2>
-                        <h3>Awlad Hossain <span><img src="" alt=""></span></h3>
+                        <h3>${element.authors[0].profile_name} <span><img src="" alt=""></span></h3>
                         <h4>91K views</h4>
                     </div>
                 </div>
