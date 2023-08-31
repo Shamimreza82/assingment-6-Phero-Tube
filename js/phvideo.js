@@ -36,15 +36,17 @@ const catagoriIDimport = async (id) => {
         <div class="card bg-base-100 border rounded-md ">
                 <div> 
                     <img src=${element.thumbnail}>
+                    <p>${element} </p>
                  <div>            
                 <div class="flex justify-start  mt-4">
                     <div class="h-16 w-16" >
                         <img class ="rounded-full" src=${element.authors[0].profile_picture}>
+                       
                     </div>
                     <div class =" ml-3">
                         <h2 class="font-bold">${element.title}</h2>
                         <h3>${element.authors[0].profile_name} <span><img src="" alt=""></span></h3>
-                        <h4>91K views</h4>
+                        <h4>${element.others.views}</h4>
                     </div>
                 </div>
               </div>
@@ -55,3 +57,11 @@ const catagoriIDimport = async (id) => {
   });
 };
 catagoriIDimport();
+
+
+
+// document.getElementById('blogBtn').addEventListener ('click', function(){
+//     // window.location.href ="blog.html"
+    
+
+// })
