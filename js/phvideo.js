@@ -5,15 +5,15 @@ const dataLode = async () => {
   const data = await res.json();
   const cardData = data.data;
 
-
   const manue = document.getElementById("manu");
   cardData.forEach((element) => {
     // console.log (element)
- 
+   
 
     const div = document.createElement("div");
     div.innerHTML = `
-        <h1 onclick="catagoriIDimport('${element.category_id}')" class =  "font-bold bg-[#25252526] py-2 px-5 rounded-md hover:bg-[#FF1F3D] hover:text-white"> ${element.category}</h1>
+        <h1 onclick="catagoriIDimport('${element.category_id}')"
+         class ="text-[#252525B3] font-bold bg-[#25252526] py-2 px-5 rounded-md hover:bg-[#FF1F3D] hover:text-white"> ${element.category}</h1>
         `;
     manue.appendChild(div);
   });
@@ -35,7 +35,13 @@ const catagoriIDimport = async (id) => {
   const data = await res.json();
   const cardDataId = data.data;
 
-    console.log (data.data)
+ 
+
+    cardDataId .forEach (element => {
+      const sort = element.others.views
+      // const view = sort.sort((a,b) => a-b)
+      console.log (sort )
+    })
 
     if (data.data.length === 0){
       const drwing = document.getElementById ('drowing')
@@ -189,7 +195,7 @@ const catagoriIDimport = async (id) => {
     const remainingSeconds = sort % 3600;
     const minutes = Math.floor(remainingSeconds / 60);
     const hourAndMinit = `${hours} hrs ${minutes} min`
-    console.log (hourAndMinit)
+    // console.log (hourAndMinit)
     const div = document.createElement("div");
     div.innerHTML = `
         <div class="card bg-base-100 border rounded-md ">
@@ -222,3 +228,10 @@ const catagoriIDimport = async (id) => {
   });
 };
 catagoriIDimport(1000);
+
+
+
+const sortByView = (element) => {
+  
+  catagoriIDimport()
+}
