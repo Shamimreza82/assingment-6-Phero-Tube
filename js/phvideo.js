@@ -34,8 +34,8 @@ const catagoriIDimport = async (id) => {
   const cardsId = document.getElementById("cards");
   cardsId.innerText = "";
   cardDataId.forEach((element) => {
-    // console.log(element);
-    const sort = element.others.views;
+    console.log(element);
+    // const sort = element.others.views;
 
 
     const div = document.createElement("div");
@@ -43,17 +43,23 @@ const catagoriIDimport = async (id) => {
     div.innerHTML = `
         <div class="card bg-base-100 border rounded-md ">
                 <div> 
-                    <img class =" h-[200px]" src=${element.thumbnail}>
+                    <img class =" h-[200px] w-full" src=${element.thumbnail}>
                     <p> </p>
                  <div>            
                 <div class="flex justify-start mt-4 p-2">
-                    <div class="h-12 w-12" >
-                        <img class ="rounded-full" src=${element.authors[0].profile_picture}>          
+                    <div class=" h-[50px] w-[50px]" >
+                        <img class ="h-[50px] rounded-full" src=${element.authors[0].profile_picture}>          
                     </div>
                     <div class =" ml-3">
                         <h2 class="font-bold">${element.title}</h2>
-                        <h3>${element.authors[0].profile_name} <span><img src=></span></h3>
+                        <div class = " flex gap-2"> 
+                        <h3>${element.authors[0].profile_name}</h3>
+                        <span>${element.authors[0].verified? `<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px"><linearGradient id="IMoH7gpu5un5Dx2vID39Ra" x1="9.858" x2="38.142" y1="9.858" y2="38.142" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#9dffce"/><stop offset="1" stop-color="#50d18d"/></linearGradient><path fill="url(#IMoH7gpu5un5Dx2vID39Ra)" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/><linearGradient id="IMoH7gpu5un5Dx2vID39Rb" x1="13" x2="36" y1="24.793" y2="24.793" gradientUnits="userSpaceOnUse"><stop offset=".824" stop-color="#135d36"/><stop offset=".931" stop-color="#125933"/><stop offset="1" stop-color="#11522f"/></linearGradient><path fill="url(#IMoH7gpu5un5Dx2vID39Rb)" d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414	c0.391-0.391,1.024-0.391,1.414,0L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414	c0.391,0.391,0.391,1.024,0,1.414l-13,13C22.317,33.098,21.683,33.098,21.293,32.707z"/></svg>` : " "} </span>
+                        </div>
+                        
                         <h4>${element.others.views}</h4>
+
+                        
                     </div>
                 </div>
               </div>        
