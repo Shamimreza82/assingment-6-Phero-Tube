@@ -1,48 +1,35 @@
 const dataLode = async () => {
-  const res = await fetch(
-    `https://openapi.programming-hero.com/api/videos/categories`
-  );
+  const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
   const data = await res.json();
   const cardData = data.data;
 
   const manue = document.getElementById("manu");
+  // manu catagori button
   cardData.forEach((element) => {
     // console.log (element)
-   
-
-    const div = document.createElement("div");
-    div.innerHTML = `
+  
+  const div = document.createElement("div");
+  div.innerHTML = `
         <h1 onclick="catagoriIDimport('${element.category_id}')"
          class ="text-[#252525B3] font-bold bg-[#25252526] py-2 px-5 rounded-md hover:bg-[#FF1F3D] hover:text-white"> ${element.category}</h1>
-        `;
+        <h1 onclick = "buttonSort(${element.category_id})"></h1>
+         `;
+
     manue.appendChild(div);
   });
 };
 
 dataLode();
 
+// -----------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-// ------------------------------------------------------------------------------------------
 const catagoriIDimport = async (id) => {
-  const res = await fetch(
-    `https://openapi.programming-hero.com/api/videos/category/${id}`
-);
+  const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
   const data = await res.json();
   const cardDataId = data.data;
-
- 
-
-    cardDataId .forEach (element => {
-      const sort = element.others.views
-      // const view = sort.sort((a,b) => a-b)
-      console.log (sort )
-    })
-
+   
+    cardDataId.sort((a, b) => parseInt(b.others.views) - parseInt(a.others.views))
+    console.log (cardDataId)
     if (data.data.length === 0){
       const drwing = document.getElementById ('drowing')
       drwing.classList.remove('hidden')
@@ -188,13 +175,20 @@ const catagoriIDimport = async (id) => {
 
   const cardsId = document.getElementById("cards");
   cardsId.innerText = "";
+  // show Cards 
+
+
   cardDataId.forEach((element) => {
     // console.log(element);
     const sort = element.others.posted_date;
     const hours = Math.floor(sort / 3600); 
     const remainingSeconds = sort % 3600;
     const minutes = Math.floor(remainingSeconds / 60);
-    const hourAndMinit = `${hours} hrs ${minutes} min`
+    const hourAndMinit = hours + " " + "hrs" + " " + minutes + "min" + " ";
+
+
+
+
     // console.log (hourAndMinit)
     const div = document.createElement("div");
     div.innerHTML = `
@@ -231,7 +225,8 @@ catagoriIDimport(1000);
 
 
 
-const sortByView = (element) => {
-  
-  catagoriIDimport()
+const buttonSort = () => {
+
+
 }
+
