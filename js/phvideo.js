@@ -13,7 +13,6 @@ const dataLode = async () => {
         <h1 onclick="catagoriIDimport('${element.category_id}')"
          class ="text-[#252525B3] font-bold bg-[#25252526] py-2 px-5 rounded-md hover:bg-[#FF1F3D] hover:text-white"> ${element.category}</h1>
          `;
-
     manue.appendChild(div);
   });
 };
@@ -22,7 +21,6 @@ dataLode();
 
 
 // -----------------------------------------------------------------------------------------------------------
-
 
 
 const catagoriIDimport = async (id) => {
@@ -176,26 +174,20 @@ const catagoriIDimport = async (id) => {
 // ------------------------------------------------------------------------------------
 
  
-
-
   const cardsId = document.getElementById("cards");
   cardsId.innerText = "";
+  console.log ()
 
-  // console.log (cardDataId)
-  
-  // console.log(cadeSort);
-
-  const sort =  cardDataId.sort((a, b) => parseInt(b.others.views) - parseInt(a.others.views));
-      
-
+  // const sort =  cardDataId.sort((a, b) => parseInt(b.others.views) - parseInt(a.others.views));
+ 
 
   cardDataId.forEach((element) => {
     // console.log(element);
-    const convirtMinitHour = element.others.posted_date;
+    const convirtMinitHour = element?.others?.posted_date;
     const hours = Math.floor(convirtMinitHour / 3600);
     const remainingSeconds = convirtMinitHour % 3600;
     const minutes = Math.floor(remainingSeconds / 60);
-    const hourAndMinit = hours + " " + "hrs" + " " + minutes + "min" + " ";
+    const hourAndMinit = hours + " " + "hrs" + " " + minutes + " " + "min" + " ";
 
     // console.log (hourAndMinit)
     const div = document.createElement("div");
@@ -206,7 +198,7 @@ const catagoriIDimport = async (id) => {
                       element.thumbnail
                     }>
                     <div class = " right-0 -mt-6 mr-1 px-2 rounded-md absolute bg-slate-600 " > 
-                        <p class=" text-white">${hourAndMinit} </p>
+                        <p class=" text-white">${hourAndMinit}</p>
                      </div>
                    
                  <div>            
@@ -236,17 +228,15 @@ const catagoriIDimport = async (id) => {
         `;
     cardsId.appendChild(div);
   });
-
-
-
 };
 catagoriIDimport(1000);
 
 
 
+
 function sortBtn () {
 
-  console.log ("name")
+  catagoriIDimport(id)
 }
 
 
