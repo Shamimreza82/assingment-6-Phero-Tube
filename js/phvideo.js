@@ -1,5 +1,7 @@
 const dataLode = async () => {
-  const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/videos/categories`
+  );
   const data = await res.json();
   const cardData = data.data;
 
@@ -19,12 +21,12 @@ const dataLode = async () => {
 
 dataLode();
 
-
 // -----------------------------------------------------------------------------------------------------------
 
-
 const catagoriIDimport = async (id) => {
-  const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/videos/category/${id}`
+  );
   const data = await res.json();
   const cardDataId = data.data;
 
@@ -171,23 +173,18 @@ const catagoriIDimport = async (id) => {
     drwing.classList.add("hidden");
   }
 
-// ------------------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------------
 
- 
   const cardsId = document.getElementById("cards");
   cardsId.innerText = "";
-  console.log ()
-
-  // const sort =  cardDataId.sort((a, b) => parseInt(b.others.views) - parseInt(a.others.views));
- 
-
   cardDataId.forEach((element) => {
     // console.log(element);
     const convirtMinitHour = element?.others?.posted_date;
     const hours = Math.floor(convirtMinitHour / 3600);
     const remainingSeconds = convirtMinitHour % 3600;
     const minutes = Math.floor(remainingSeconds / 60);
-    const hourAndMinit = hours + " " + "hrs" + " " + minutes + " " + "min" + " ";
+    const hourAndMinit =
+      hours + " " + "hrs" + " " + minutes + " " + "min" + " ";
 
     // console.log (hourAndMinit)
     const div = document.createElement("div");
@@ -231,12 +228,10 @@ const catagoriIDimport = async (id) => {
 };
 catagoriIDimport(1000);
 
+// ----------------------------------Sort Button--------------------------------------------------
 
-
-
-function sortBtn () {
-
-  catagoriIDimport(id)
-}
-
-
+const shortByView = (id) => {
+  const sort = id.sort(
+    (a, b) => parseInt(b.others.views) - parseInt(a.others.views)
+  );
+};
